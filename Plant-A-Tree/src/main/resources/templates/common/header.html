@@ -1,4 +1,4 @@
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 
 <head th:fragment="common-header">
 	<meta charset="utf-8" />
@@ -57,8 +57,9 @@
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href="#">SHOPPING CART</a></li>
-					<li><a th:href="@{/login}">MY ACCOUNT</a></li>
-					<li><a href="#">LOGOUT</a></li>
+					<li><a sec:authorize="isAnonymous()" th:href="@{/login}">MY ACCOUNT</a></li>
+					<li><a sec:authorize="isAuthenticated()" th:href="@{/login}">MY ACCOUNT</a></li>
+					<li><a sec:authorize="isAuthenticated()" th:href="@{/logout}">LOGOUT</a></li>
 				</ul>
 			</div>
 			
@@ -66,6 +67,7 @@
 		
 	</nav>
 </div>
+
 <div th:fragment="common-bottom-scripts">
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"
 		integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ"
