@@ -32,7 +32,7 @@ private static final String[] PUBLIC_MATCHERS= {
 		
 		  "/css/**", 
 		  "/js/**", 
-		 "/image/**", 
+		 "/images/**", 
 		  "/", 
 		  "/myAccount"
 		

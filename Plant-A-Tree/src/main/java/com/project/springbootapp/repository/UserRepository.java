@@ -6,4 +6,5 @@ import com.project.springbootapp.user.User;
 
 public interface UserRepository extends CrudRepository<User,Long> {
 User findByUsername(String username);
+User findByEmail(String email);
 }
