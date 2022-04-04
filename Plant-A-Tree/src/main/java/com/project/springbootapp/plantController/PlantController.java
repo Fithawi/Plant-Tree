@@ -80,6 +80,11 @@ public String IndexPage() {
 			
 			return "myAccount";
 		}
+		if (userService.findByEmail(userEmail) != null) {
+			model.addAttribute("emailExists", true);
+			
+			return "myAccount";
+		}
 		User user = new User();
 		user.setUsername(username);
 		user.setEmail(userEmail);
@@ -129,7 +134,7 @@ public String IndexPage() {
 		Authentication authentication = new UsernamePasswordAuthenticationToken(userDetails, userDetails.getPassword(),
 				userDetails.getAuthorities());
 		SecurityContextHolder.getContext().setAuthentication(authentication);
-		
+		model.addAttribute("user", user);
 		model.addAttribute("classActiveEdit",true);
 	return "myProfile";
 	}

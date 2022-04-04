@@ -1,5 +1,5 @@
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-
+<html lang="en"  xmlns:th="http://www.w3.org/1000/xhtml">
+<!--xmlns:th="http://www.thymeleaf.org"-->
 <head th:replace="common/header :: common-header" />
 
 
@@ -56,13 +56,13 @@
 											<div class="row">
 												<div class="col-xs-6">
 													<label for="firstName">First Name</label> <input type="text"
-														class="form-control" id="firstName" name="firstName"
-														th:value="${user.firstName}" />
+														class="form-control" id="firstName" name="firstname"
+														th:value="${user.firstname}" />
 												</div>
 												<div class="col-xs-6">
 													<label for="lastName">Last Name</label> <input type="text"
-														class="form-control" id="lastName" name="lastName"
-														th:value="${user.lastName}" />
+														class="form-control" id="lastName" name="lastname"
+														th:value="${user.lastname}" />
 												</div>
 											</div>
 										</div>
