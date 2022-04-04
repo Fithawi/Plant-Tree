@@ -2,6 +2,8 @@ package com.project.springbootapp.service.impl;
 
 import java.util.Set;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +17,7 @@ import com.project.springbootapp.user.security.UserRole;
 
 @Service
 public class UserServiceImpl implements UserService{
+	private static final Logger LOG = LoggerFactory.getLogger(UserService.class);
 	@Autowired
 	private PasswordResetTokenRepository passwordResetTokenRepository;
 	@Autowired
@@ -44,7 +47,7 @@ public class UserServiceImpl implements UserService{
 	public User createUser(User user, Set<UserRole> userRoles) throws Exception{
 		User localUser = userRepository.findByUsername(user.getUsername());
 		if(localUser != null) {
-			throw new Exception("user already exists. Nothing will be done.");
+			LOG.info("user {} already exists. Nothing will be done.", user.getUsername());
 		} else {
 			for (UserRole ur : userRoles) {
 				roleRepository.save(ur.getRole());

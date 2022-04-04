@@ -34,7 +34,8 @@ private static final String[] PUBLIC_MATCHERS= {
 		  "/js/**", 
 		 "/images/**", 
 		  "/", 
-		  "/myAccount"
+		  "/newUser",
+		  "/forgetPassword"
 		
 };
 @Override
