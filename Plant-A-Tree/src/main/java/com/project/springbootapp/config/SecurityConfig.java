@@ -32,10 +32,12 @@ private static final String[] PUBLIC_MATCHERS= {
 		
 		  "/css/**", 
 		  "/js/**", 
-		 "/images/**", 
-		  "/", 
+		"/images/**", 
+		  "/",
 		  "/newUser",
-		  "/forgetPassword"
+		  "/forgetPassword",
+		  "/login",
+		  "/fonts/**",
 		
 };
 @Override
