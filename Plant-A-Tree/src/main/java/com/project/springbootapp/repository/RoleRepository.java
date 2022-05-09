@@ -5,4 +5,5 @@ import com.project.springbootapp.user.security.Role;
 
 public interface RoleRepository extends CrudRepository<Role,Long>{
 
+	Role findByname(String name);
 }

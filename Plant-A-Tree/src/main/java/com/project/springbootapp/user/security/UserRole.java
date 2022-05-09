@@ -1,5 +1,6 @@
 package com.project.springbootapp.user.security;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
