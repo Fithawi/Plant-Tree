@@ -1,0 +1,61 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="common/header :: common-header" />
+	
+
+<body>
+<div th:replace="common/header :: navbar" />
+	
+		<div class="container">
+		
+		<div>
+			<ol class="breadcrumb">
+				<li><a th:href="@{/plant/plantList}"><i class="fa fa-long-arrow-left" aria-hidden="true"></i>Go back</a></li>
+				<li><a th:href="@{/plant/updatePlant(id=${plant.get().id})}">Edit</a></li>
+			</ol>
+			
+		</div>
+		<!--th:href="@{/plant/plantInfo(id=${plant.id})}"-->
+		<div class="row">
+		
+			<div class="col-xs-3">
+				<div class="panel panel-default">
+				<div class="panel-body">
+					<img  class="img-responsive center-block" th:src="@{/image/log.jpg}"/>
+					<!--th:src="@{/image/book/}+${book.id}+'.png'"-->
+				</div>
+				</div>
+			</div>
+			<div class="col-xs-9">
+				<h3 th:text="${plant.get().plantname}"></h3>
+				<div class="row">
+					<div class="col-xs-6">
+						<p><strong>Plant Name: </strong><span th:text="${plant.get().plantname}"></span></p>
+						<p><strong>Plant Type: </strong><span th:text="${plant.get().planttype}"></span></p>
+						<p><strong>Flower color: </strong><span th:text="${plant.get().flowercolor}"></span></p>
+						<p><strong>Height: </strong><span th:text="${plant.get().height}"></span></p>
+						<p><strong>Soil Type: </strong><span th:text="${plant.get().soiltype}"></span></p>
+						<p><strong>Flowering Time: </strong><span th:text="${plant.get().floweringtime}"></span></p>
+					</div>
+					<div class="col-xs-6">
+						<p><strong>Spread: </strong><span th:text="${plant.get().spread}"></span></p>
+						<p><strong>Hardness: </strong><span th:text="${plant.get().hardness}"></span></p>
+						<p><strong>Shipping Weight: </strong><span th:text="${plant.get().shippingWeight}"></span></p>
+						<p><strong>List Price: </strong><span th:text="${plant.get().listPrice}"></span></p>
+						<p><strong>Our Price: </strong><span th:text="${plant.get().ourPrice}"></span></p>
+						<p><strong>Number in Stock: </strong><span th:text="${plant.get().inStockNumber}"></span></p>
+					</div>
+				</div>
+				
+				<p><Strong>Description: </Strong><span th:utext="${plant.get().description}"></span></p>
+			</div>
+			
+		</div>
+	</div>
+
+	
+<div th:replace="common/header :: common-bottom-scripts" />
+
+</body>
+
+</html>

@@ -1,0 +1,50 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="common/header :: common-header" />
+	
+
+<body>
+<div th:replace="common/header :: navbar" />
+	<div class="container">
+		<div class="table-responsive">
+			<table id="bookListTable" class="table table-bordered table-hover table-striped">
+				<thead>
+					<tr>
+						<th><input th:id="selectAllPlants" type="checkbox" /></th>
+						<th>Name</th>
+						<th>Type</th>
+						<th>Flowering time</th>
+						<th>List Price</th>
+						<th>Our Price</th>
+						<th>Active?</th>
+						<th>Operation</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr data-th-each="plant : ${plantList}">
+						<td>
+						<input hidden="hidden" name="id" th:value="${plant.id}" />
+						
+						</td>
+						<td><a th:href="@{/plant/plantInfo(id=${plant.id})}"><span th:text="${plant.plantname}"></span></a></td>
+						<!--<td th:text="${plant.plantname}"></td>-->
+						<td th:text="${plant.planttype}"></td>
+						<td th:text="${plant.floweringtime}"></td>
+						<td th:text="${plant.listPrice}"></td>
+						<td th:text="${plant.ourPrice}"></td>
+						<td th:text="${plant.active}"></td>
+						<td>delete</td>
+						
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	
+	</div>
+	
+	
+<div th:replace="common/header :: common-bottom-scripts" />
+
+</body>
+
+</html>

@@ -1,13 +1,19 @@
 package com.project.adminportal.user;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Transient;
 
 import org.springframework.web.multipart.MultipartFile;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.project.adminportal.user.PlantToCartItem;
 
 @Entity
 public class Plant {
@@ -36,7 +42,10 @@ public class Plant {
 	@Transient
 	private MultipartFile plantImage;
 
-	
+	@OneToMany(mappedBy = "plant")
+	@JsonIgnore
+	private List<PlantToCartItem> plantToCartItemList;
+
 
 	public Long getId() {
 		return id;
@@ -181,6 +190,15 @@ public class Plant {
 		this.plantImage = plantImage;
 	}
 
+	public List<PlantToCartItem> getPlantToCartItemList() {
+		return plantToCartItemList;
+	}
+
+	public void setPlantToCartItemList(List<PlantToCartItem> plantToCartItemList) {
+		this.plantToCartItemList = plantToCartItemList;
+	}
+
+	
 	
 	
 }

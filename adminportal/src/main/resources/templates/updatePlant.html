@@ -1,0 +1,215 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="common/header :: common-header" />
+
+
+<body>
+	<div th:replace="common/header :: navbar" />
+	<div class="container">
+		<div class="row">
+			<form class="form-horizontal" th:action="@{/plant/updatePlant}" method="post" enctype="multipart/form-data">
+				<fieldset>
+					<legend class="center-block">
+						Update Plant Information<span style="font-size: small"> * is a
+							required field</span>
+					</legend>
+					<input hidden="hidden" name="id" th:value="${plant.get().id}"/>
+					<div class="form-group">
+						<label class="col-md-2 control-label" for="plantname">* Plant Name</label>
+
+						<div class="col-md-8">
+							<input type="text" name="plantname" class="form-control" id="plantname"
+								th:value="${plant.get().plantname}" required="required" placeholder="Name" />
+							<span class="help-block">Name of the plant</span>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-md-2 control-label" for="planttype">* Plant Type</label>
+
+						<div class="col-md-8">
+							<select th:value="${plant.get().planttype}" id="planttype" name="planttype"
+								class="form-control">
+								<option value="" selected="selected" disabled="disabled">Please
+									select an option...</option>
+						
+								<option value="Alpines" th:selected="(${plant.get().planttype}=='Alpines')">Alpines</option>
+								<option value="Aquatic plant" th:selected="(${plant.get().planttype}=='Aquatic plant')">Aquatic plant</option>
+								<option value="Bulbs" th:selected="(${plant.get().planttype}=='Bulbs')">Bulbs</option>
+								<option value="Cacti &amp; Succulents" th:selected="(${plant.get().planttype}=='Cacti &amp; Succulents')">Cacti &amp; Succulents</option>
+								<option value="Carniverous plant" th:selected="(${plant.get().planttype}=='Carniverous plant')">Carniverous plant</option>
+								<option value="Climbers" th:selected="(${plant.get().planttype}=='Climbers')">Climbers</option>
+								<option value="Ferns" th:selected="(${plant.get().planttype}=='Ferns')">Ferns</option>
+								<option value="Grasses" th:selected="(${plant.get().planttype}=='Grasses')">Grasses</option>
+								<option value="Heathers" th:selected="(${plant.get().planttype}=='Heathers')">Heathers</option>
+								<option value="Shrubs" th:selected="(${plant.get().planttype}=='Shrubs')">Shrubs</option>
+								<option value="Trees" th:selected="(${plant.get().planttype}=='Trees')">Trees</option>
+							</select>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-md-2 control-label" for="flowercolor"> Flower Color</label>
+
+						<div class="col-md-8">
+							<input type="text" name="flowercolor" class="form-control" id="flowercolor"
+								th:value="${plant.get().flowercolor}" placeholder="Flower color" />
+							<span class="help-block">Flower color of the plant</span>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-md-2 control-label" for="floweringtime"> Flowering Time</label>
+
+						<div class="col-md-8">
+							<select th:value="${plant.get().floweringtime}" id="floweringtime" name="floweringtime"
+								class="form-control">
+								<option value="winter">Winter</option>
+								<option value="summer">Summer</option>
+								<option value="spring">Spring</option>
+								<option value="autumn">Autumn</option>
+							</select>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-md-2 control-label" for="height"> Height</label>
+
+						<div class="col-md-8">
+							<select th:value="${plant.get().height}" id="height" name="height"
+								class="form-control">
+								<option value="short">Short</option>
+								<option value="medium">Medium</option>
+								<option value="long">Long</option>
+								
+							</select>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-md-2 control-label" for="spread"> Spread</label>
+
+						<div class="col-md-8">
+							<select th:value="${plant.get().spread}" id="spread" name="spread"
+								class="form-control">
+								<option value="0 - 0.1meter">0 - 0.1meter</option>
+								<option value="0.1m - 0.5meter">0.1m - 0.5meter</option>
+								<option value="0.5m - 1meter">0.5m - 1meter</option>
+								<option value="1m - 1.5meters">1m - 1.5meters</option>
+								<option value="1.5m - 2.5meters">1.5m - 2.5meters</option>
+							</select>
+						</div>
+					</div>
+					
+					<div class="form-group">
+						<label class="col-md-2 control-label" for="hardness"> Hardness</label>
+
+						<div class="col-md-8">
+							<select th:value="${plant.get().hardness}" id="hardness" name="hardness"
+								class="form-control">
+								<option value="H1A">H1A</option>
+								<option value="H1B">H1B</option>
+								<option value="H1C">H1C</option>
+								<option value="H2">H2</option>
+								<option value="H3">H3</option>
+								<option value="H4">H4</option>
+							</select>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-md-2 control-label" for="soiltype"> Soil Type</label>
+
+						<div class="col-md-8">
+							<input type="text" name="soiltype" class="form-control" id="soiltype"
+								th:value="${plant.get().soiltype}" placeholder="Soil type" />
+							<span class="help-block">Soil type of the plant</span>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-md-2 control-label" for="shippingWeight">Shipping
+							Weight</label>
+						<div class="col-md-8">
+							<div class="input-group">
+								<input th:value="${plant.get().shippingWeight}" type="number" step="0.01"
+									name="shippingWeight" class="form-control" id="shippingWeight"
+									placeholder="Shipping Weight" /> <span
+									class="input-group-addon">Grams</span>
+							</div>
+							<span class="help-block">Shipping Weight of the plant</span>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-md-2 control-label" for="listPrice">List
+							Price</label>
+						<div class="col-md-8">
+							<div class="input-group">
+								<span class="input-group-addon">$</span> <input
+									th:value="${plant.get().listPrice}" type="number" name="listPrice" step="0.01"
+									class="form-control" id="listPrice" placeholder="List Price" />
+							</div>
+							<span class="help-block">List price of the plant</span>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-md-2 control-label" for="ourPrice">Our
+							Price</label>
+						<div class="col-md-8">
+							<div class="input-group">
+								<span class="input-group-addon">$</span> <input
+									th:value="${plant.get().ourPrice}" type="number" name="ourPrice" step="0.01"
+									class="form-control" id="ourPrice" placeholder="Our Price" />
+							</div>
+							<span class="help-block">Our price of the book</span>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-md-2 control-label" for="inStockNumber">Number
+							in stock</label>
+						<div class="col-md-8">
+							<input th:value="${plant.get().inStockNumber}" type="number"
+								name="inStockNumber" class="form-control" id="inStockNumber"
+								placeholder="Number of in-stock copies" /> <span
+								class="help-block">Number of plants in-stock</span>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-md-2 control-label" for="status">Status</label>
+						<div class="col-md-8">
+							<label><input value="true" type="radio" name="active"
+								checked="checked" /> Active </label> <label><input
+								value="false" type="radio" name="active" />
+								Inactive </label> <span class="help-block">Whether the book is
+								active or inactive</span>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-md-2 control-label" for="description">Description</label>
+						<div class="col-md-8">
+							<textarea name="description" rows="5" class="form-control"
+								id="description" th:value="${plant.get().description}"
+								placeholder="Description">
+								</textarea>
+							<span class="help-block">Description of the book</span>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-md-2">
+							<label for="plantImage">Upload plant image</label>
+						</div>
+						<div class="col-md-8">
+							<input id="plantImage" type="file" name="plantImage"
+								th:value="${plant.get().plantImage}" />
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-md-2"></div>
+						<div class="col-md-8">
+							<button type="submit" class="btn btn-success">Add Plant</button>
+							<a class="btn btn-danger" th:href="@{/}">Cancel</a>
+						</div>
+					</div>
+				</fieldset>
+			</form>
+		</div>
+	</div>
+
+	<div th:replace="common/header :: common-bottom-scripts" />
+
+</body>
+
+</html>

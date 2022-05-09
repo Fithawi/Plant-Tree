@@ -3,6 +3,7 @@ package com.project.adminportal.config;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -29,25 +30,39 @@ private BCryptPasswordEncoder passwordEncoder() {
 	return SecurityUtility.passwordEncoder();
 }
 private static final String[] PUBLIC_MATCHERS= {
-		
+		/* "/resources/**", */
 		  "/css/**", 
-		  "/js/**", 
-		  "/image/**", 
-		  "/newUser",
-		  "/forgetPassword",
-		"/login"  
+		  "/js/**",
+		  "/all/**",
+		  "/image/**",
+		  "/imag/**",
+		  "static/imag/upload/**",
+		 
+		/*
+		 * "/image/*.jpg", "/image/*.png",
+		 */
+		/*
+		 * "/newUser", "/forgetPassword",
+		 */
+		  "/login",
+		  "/addPlant",
+		  "/home",
+		  "/common/**",
+		  "/plantList",
+		  "/"
 		
 };
 @Override
 protected void configure(HttpSecurity http)throws Exception{
 	http
 	.authorizeRequests().
-	antMatchers(PUBLIC_MATCHERS).
+	antMatchers(HttpMethod.GET,PUBLIC_MATCHERS).
 	permitAll().anyRequest().authenticated();
 	
 	http
 	.csrf().disable().cors().disable()
-	.formLogin().failureUrl("/login?error").defaultSuccessUrl("/")
+	.formLogin().failureUrl("/login?error")
+	.defaultSuccessUrl("/") 
 	.loginPage("/login").permitAll()
 	.and()
 	.logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"))

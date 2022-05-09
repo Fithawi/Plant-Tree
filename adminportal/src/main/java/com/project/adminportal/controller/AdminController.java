@@ -13,7 +13,7 @@ public class AdminController {
 public String home() {
 	return "home";
 }
-@RequestMapping("login")
+@RequestMapping("/login")
 public String login() {
 	return "login";
 }
